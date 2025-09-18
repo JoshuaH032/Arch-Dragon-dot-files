@@ -1,0 +1,33 @@
+# caches & logs
+.cache/
+.local/share/recently-used.xbel
+.local/share/Trash/
+*.lock
+*.log
+
+# plasma/session junk
+.config/plasma-workspace/env/
+.config/plasma-workspace/shutdown/
+.config/kscreenlockerrc
+.config/kconf_updaterc
+.config/ksmserverrc
+
+# thumbnails
+.thumbnails/
+.cache/thumbnails/
+
+# browser + app profiles (usually huge/private)
+.config/chromium/
+.config/google-chrome/
+.config/BraveSoftware/
+.config/discord/
+.config/steam/
+
+# package/build junk
+.pkg/
+*.pacnew
+*.pacsave
+
+# secrets (only if you ever add them—better keep outside repo)
+.ssh/
+.gnupg/

@@ -1,0 +1,118 @@
+/* === Autumn Mosaic — Waybar CSS (clean + spacing fixes) === */
+@define-color bark      #3D2B1F;
+@define-color wood      #4A3326;
+@define-color pumpkin   #FF8C42;
+@define-color leaf      #FFD166;
+@define-color maple     #D62828;
+@define-color parchment #EDE6D6;
+@define-color warmmute  #C9B8A8;
+
+/* Global font */
+* {
+  font-family: Cantarell, Inter, sans-serif;
+  font-size: 12pt;
+}
+
+window#waybar {
+  background: rgba(61,43,31,0.32);
+  color: @parchment;
+  border: 1px solid rgba(237,230,214,0.15);
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin: 6px 8px;
+}
+
+/* Module tiles */
+#workspaces, #custom-wofi, #clock, #cpu, #memory,
+#temperature, #custom-nvme_temp, #backlight, #network,
+#pulseaudio, #battery, #power-profiles-daemon, #tray, #custom-power {
+  background: rgba(74,51,38,0.24);
+  padding: 5px 12px;
+  margin: 0 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(237,230,214,0.12);
+}
+
+/* Workspaces */
+#workspaces button {
+  background: transparent;
+  color: @warmmute;
+  padding: 2px 8px;
+  margin: 0 3px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+#workspaces button.active {
+  color: @bark;
+  background: rgba(255,209,102,0.65);
+  border-color: rgba(0,0,0,0.2);
+}
+#workspaces button.urgent {
+  color: @bark;
+  background: rgba(214,40,40,0.7);
+}
+
+/* Wofi button */
+#custom-wofi { color: @leaf; }
+#custom-wofi:hover {
+  background: rgba(255,140,66,0.25);
+  border-color: rgba(255,140,66,0.65);
+  color: @pumpkin;
+}
+
+/* Accents */
+#clock { color: @leaf; }
+#network { color: @pumpkin; }
+#pulseaudio { color: @parchment; }
+#pulseaudio.muted { color: @warmmute; }
+#battery.warning { color: @maple; }
+#battery.critical { background: rgba(214,40,40,0.85); color: @bark; }
+
+/* CPU temp */
+#temperature { font-weight: 600; }
+#temperature.normal   { color: @leaf; }
+#temperature.warning  { color: @pumpkin; }
+#temperature.critical { color: @maple; }
+
+/* NVMe temp with splitter */
+#custom-nvme_temp {
+  color: @pumpkin;
+  border-left: 1px solid @warmmute;  /* splitter */
+  padding-left: 10px;
+  margin-left: 8px;
+}
+
+/* Battery spacing */
+#battery {
+  padding: 5px 12px;
+  margin-left: 8px;
+  border-radius: 6px;
+}
+
+/* Power profiles — keep spacing + readable width */
+#power-profiles-daemon {
+  color: @leaf;
+  min-width: 120px;       /* prevents squish */
+  padding: 6px 14px;      /* comfy hit target */
+  margin-left: 8px;       /* space from neighbors */
+}
+#power-profiles-daemon.performance { color: @pumpkin; }
+#power-profiles-daemon.balanced    { color: @parchment; }
+#power-profiles-daemon.power-saver { color: @maple; }
+
+/* Power button */
+#custom-power {
+  background: rgba(214,40,40,0.85);
+  color: @bark;
+  border: 1px solid rgba(0,0,0,0.25);
+  margin-left: 10px;
+}
+#custom-power:hover { opacity: 0.92; }
+
+/* Tooltips */
+tooltip {
+  background: rgba(61,43,31,0.88);
+  color: @parchment;
+  border: 1px solid @pumpkin;
+  border-radius: 6px;
+}
