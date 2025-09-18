@@ -40,5 +40,3 @@ Feel free to modify the configuration files to suit your preferences. Contributi
 ## 📄 License
 
 This project is licensed under the MIT License.
-
-```
