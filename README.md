@@ -1,7 +1,3 @@
-To enhance your dotfiles repository, adding a comprehensive README is a great idea. Here's a structured template you can use, incorporating best practices from established dotfiles repositories ([FreeCodeCamp][1]):
-
----
-
 # Arch-Dragon Dotfiles
 
 A personalized collection of configuration files for a streamlined Arch Linux setup.
