@@ -1,0 +1,62 @@
+# ~/.config/alacritty/alacritty.toml
+# Autumn Mosaic Theme 🌅🍂
+
+[window]
+padding.x = 10
+padding.y = 10
+dynamic_padding = true
+opacity = 0.92
+decorations = "full"
+
+[font]
+size = 12.5
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[cursor]
+unfocused_hollow = true
+
+[cursor.style]
+shape = "Block"
+blinking = "On"
+
+[colors.primary]
+background = "0x1c1a17" # Deep bark brown
+foreground = "0xeae7dc" # Warm parchment
+
+[colors.normal]
+black   = "0x2b2b2b"
+red     = "0xcc241d"
+green   = "0x98971a"
+yellow  = "0xd79921"
+blue    = "0x458588"
+magenta = "0xb16286"
+cyan    = "0x689d6a"
+white   = "0xebdbb2"
+
+[colors.bright]
+black   = "0x3c3836"
+red     = "0xfb4934"
+green   = "0xb8bb26"
+yellow  = "0xfabd2f"
+blue    = "0x83a598"
+magenta = "0xd3869b"
+cyan    = "0x8ec07c"
+white   = "0xfbf1c7"
+
+[colors.selection]
+text = "0x282828"
+background = "0xebdbb2"
+
+[general]
+live_config_reload = true

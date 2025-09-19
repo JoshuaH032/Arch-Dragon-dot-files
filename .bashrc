@@ -1,4 +1,5 @@
-# ~/.bashrc  — Arch-Dragon minimal + purple prompt + fastfetch
+# ~/.bashrc — Arch-Dragon Autumn Mosaic 🌅🐉
+# Minimal + colorful + reload toolkit
 
 # Bail if non-interactive
 [[ $- != *i* ]] && return
@@ -20,7 +21,20 @@ HISTCONTROL=ignoredups:ignorespace
 HISTTIMEFORMAT="%F %T "
 PROMPT_COMMAND='history -a; history -c; history -r'
 
-# --- Colors for ls/grep (use ~/.dircolors if present) ---
+# --- Bash completion ---
+if ! shopt -oq posix; then
+  if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [[ -f /etc/bash_completion ]]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# Extra completions
+complete -o default -o filenames nano
+complete -o default -o filenames config
+
+# --- Colors for ls/grep ---
 if command -v dircolors >/dev/null 2>&1; then
   [[ -f ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
@@ -33,40 +47,42 @@ alias ...='cd ../..'
 alias update='sudo pacman -Syu'
 cleanup() {                           # remove orphans safely
   local o; o="$(pacman -Qdtq 2>/dev/null || true)"
-  [[ -n "$o" ]] && sudo pacman -Rns $o || echo "No orphaned packages."
+  [[ -n "$o" ]] && sudo pacman -Rns $o || echo "🌿 No orphaned packages."
 }
 
-# --- Kitty/terminal title (nice with tiling bars) ---
+# --- Reload toolkit ---
+reload() {
+  source ~/.bashrc && echo -e "🍂 Bashrc reloaded!"
+}
+reload.alacritty() {
+  pkill -USR1 -x alacritty && echo -e "🔥 Alacritty config reloaded!"
+}
+reload.waybar() {
+  pkill waybar && waybar & disown
+  echo -e "📊 Waybar reloaded!"
+}
+
+# --- Terminal title ---
 set_title() { printf "\033]2;%s\007" "$*"; }
 PROMPT_COMMAND="set_title \"\u@\h: \w\"; $PROMPT_COMMAND"
 
-# --- Purple prompt to match the astral theme ---
-# username (violet) @ host (deep blue) cwd (lavender)
-PS1='\[\e[38;5;135m\]\u\[\e[0m\]@\[\e[38;5;63m\]\h \[\e[38;5;141m\]\W\[\e[0m\]\$ '
+# --- Autumn Mosaic Prompt ---
+PS1='\[\e[38;5;208m\]\u\[\e[0m\]@\[\e[38;5;130m\]\h \[\e[38;5;172m\]\W\[\e[0m\]\$ '
 
-# --- Arch-Dragon Welcome ---
+# --- Arch-Dragon Autumn Welcome ---
 clear
-echo -e "\e[36m======================================\e[0m"
-echo -e "   🐉 Welcome back, Arch-Dragon 🧊"
-echo -e "   Host: \e[35m$(uname -n)\e[0m"
+echo -e "\e[38;5;208m======================================\e[0m"
+echo -e "   🐉 Welcome back, \e[38;5;172mArch-Dragon\e[0m"
+echo -e "   Host:   \e[35m$(uname -n)\e[0m"
 echo -e "   Kernel: \e[32m$(uname -r)\e[0m"
 echo -e "   Uptime: \e[33m$(uptime -p | cut -d ' ' -f2-)\e[0m"
 echo -e "   Date:   \e[36m$(date)\e[0m"
-echo -e "\e[36m======================================\e[0m"
-echo -e "   🐧 ArchLinux is ready to serve you 🐧"
+echo -e "\e[38;5;208m======================================\e[0m"
+echo -e "   🍁 ArchLinux is ready to serve you 🍁"
 echo
 
 # --- Fastfetch (if available) ---
 command -v fastfetch >/dev/null 2>&1 && fastfetch
 
-# ~/.warp-proxy-on
-export ALL_PROXY="socks5h://127.0.0.1:40000"
-export HTTP_PROXY="$ALL_PROXY"
-export HTTPS_PROXY="$ALL_PROXY"
-export NO_PROXY="127.0.0.1,localhost,::1"
-
-# ~/.warp-proxy-off
-unset ALL_PROXY HTTP_PROXY HTTPS_PROXY NO_PROXY
-
-alias config='/usr/bin/git --git-dir=/home/joshuah/.cfg/ --work-tree=/home/joshuah'
+# --- Dotfiles alias (bare git repo) ---
 alias config='/usr/bin/git --git-dir=/home/joshuah/.cfg/ --work-tree=/home/joshuah'
