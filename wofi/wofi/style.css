@@ -1,0 +1,49 @@
+window {
+  font-family: Inter, Cantarell, sans-serif;
+  font-size: 13px;
+  background-color: rgba(61,43,31,0.92);     /* bark */
+  color: #EDE6D6;                             /* parchment */
+  border: 1px solid rgba(237,230,214,0.18);
+  border-radius: 10px;
+}
+
+#input {
+  padding: 10px 12px;
+  margin: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(237,230,214,0.18);
+  background: rgba(74,51,38,0.35);           /* wood */
+  color: #EDE6D6;
+}
+
+#inner-box {
+  padding: 6px 8px;
+}
+
+#outer-box {
+  margin: 8px;
+}
+
+#scroll {
+  padding: 6px 2px;
+}
+
+#entry {
+  padding: 8px 10px;
+  margin: 4px 0;
+  border-radius: 8px;                         /* square-round */
+}
+
+#entry:selected {
+  background: rgba(255,140,66,0.25);          /* pumpkin glow */
+  border: 1px solid rgba(255,140,66,0.55);
+  color: #FFD166;                             /* leaf */
+}
+
+#img {
+  padding-right: 8px;
+}
+
+#text {
+  margin-left: 6px;
+}
